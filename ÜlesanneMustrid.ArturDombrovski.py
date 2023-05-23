@@ -1,10 +1,10 @@
-from tkinter import *
-from math import *
-from random import *
-from tkinter import font
+from tkinter import *   # графический интерфейс
+from math import *    #
+from random import * #
+from tkinter import font #  работы с шрифтами в графическом интерфейсе Tkinter.
 
 
-def Eesti(aken):
+def Eesti(aken):        #используется для определения пользовательских функций. 
     aken.create_rectangle(0,120,  300,160, fill="blue")
     aken.create_rectangle(0,160,   300,200, fill="black")
     aken.create_rectangle(0,200,   300,240, fill="white")
@@ -22,13 +22,13 @@ def Polski(aken):
 
 
 def Ruuted(aken):
-    k = 10
+    k = 10    #определяет количество повторений цикла.
     x0 = 0
     y0 = 0
     x1 = 300
     y1 = 300
     a = 150
-    r = (a ** 2 + a ** 2) ** (1/2)
+    r = (a ** 2 + a ** 2) ** (1/2)   #корень квадратный из суммы a в квадрате 
     p = (a - r)
     for i in range(k):
         x0 += p
@@ -37,9 +37,9 @@ def Ruuted(aken):
         y1 -= p
         aken.create_rectangle(x0, y0, x1, y1, width=1, outline="blue", fill="red")
         aken.create_oval(x0, y0, x1, y1, width=1, outline="blue", fill="yellow")  
-        p = r - a
-        r = r - p
-        a = ((r) * sqrt(2)) / 2
+        p = r - a   #обновляется как разность между r и a.
+        r = r - p   #обновляется как разность между r и p.
+        a = ((r) * sqrt(2)) / 2   # sqrt- вычисления квадратного корня числа.
 
 
 def maled(aken):
@@ -49,7 +49,7 @@ def maled(aken):
         for j in range(8):
             x1 = i * square_size
             y1 = j * square_size
-            if (i + j) % 2 == 0:
+            if (i + j) % 2 == 0:  # % -  зятия остатка от деления.
                 color = "white"
             else:
                 color = "black"
@@ -82,7 +82,7 @@ def stoplight(aken):
     aken.create_line(30,310,  140,310,  width=4 , fill="black")
 
 
-def valik():
+def valik():       #она создает новое окно raam с холстом aken
     num = var.get()
     if num == 1:
         raam = Tk()
@@ -127,11 +127,11 @@ def valik():
         stoplight(aken)
         aken.pack()
 
-aken = Tk()
+aken = Tk()  # создает главное окно.
 aken.title("Tervist")
 aken.geometry("150x150")
 
-var = IntVar()
+var = IntVar()    # создает новую переменную типа IntVar из модуля Tkinter.
 
 r1 = Radiobutton(aken, text="Lipp1", variable=var, value=1, command=valik)
 r2 = Radiobutton(aken, text="Lipp2", variable=var, value=2, command=valik)
@@ -151,4 +151,4 @@ r5.grid(row=5, column=0)
 r6.grid(row=6, column=0)
 r7.grid(row=7, column=0)
 
-aken.mainloop()
+aken.mainloop()   #  окно будет открыто и будет ожидать действий пользователя, пока не будет закрыто.
